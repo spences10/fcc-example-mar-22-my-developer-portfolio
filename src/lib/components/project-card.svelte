@@ -14,12 +14,3 @@
     </div>
   </a>
 </article>
-
-<style>
-  img {
-    width: 300px;
-  }
-  a {
-    color: red;
-  }
-</style>
