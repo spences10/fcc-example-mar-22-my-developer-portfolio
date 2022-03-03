@@ -1,4 +1,5 @@
 <script context="module">
+  import ProjectCard from '$lib/components/project-card.svelte'
   import { client } from '$lib/graphql-client'
 
   export const load = async () => {
@@ -23,10 +24,7 @@
   export let projects
 </script>
 
-<pre>{JSON.stringify(projects, null, 2)}</pre>
+{#each projects as { name, description, image, slug }}
+  <ProjectCard {name} {description} url={image[0].url} {slug} />
+{/each}
 
-<h1>Welcome to SvelteKit</h1>
-<p>
-  Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the
-  documentation
-</p>

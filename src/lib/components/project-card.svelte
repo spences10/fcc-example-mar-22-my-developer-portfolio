@@ -1,0 +1,25 @@
+<script>
+  export let url = ''
+  export let name = ''
+  export let slug = ''
+  export let description = ''
+</script>
+
+<article>
+  <img src={url} alt={name} />
+  <a href={`/projects/${slug}`}>
+    <div>
+      <h2>{name}</h2>
+      <p>{description.slice(0, 80)}</p>
+    </div>
+  </a>
+</article>
+
+<style>
+  img {
+    width: 300px;
+  }
+  a {
+    color: red;
+  }
+</style>
