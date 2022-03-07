@@ -1,37 +1,9 @@
 <script context="module">
   import ProjectCard from '$lib/components/project-card.svelte'
   import { client } from '$lib/graphql-client'
-  import { gql } from 'graphql-request'
+  import { authorsQuery, projectsQuery } from '$lib/graphql-queries'
 
   export const load = async () => {
-    const projectsQuery = gql`
-      query GetProjects {
-        projects {
-          name
-          slug
-          description
-          tags
-          demo
-          sourceCode
-          image {
-            url
-          }
-        }
-      }
-    `
-    const authorsQuery = gql`
-      query GetAuthors {
-        authors {
-          name
-          intro
-          bio
-          slug
-          picture {
-            url
-          }
-        }
-      }
-    `
     const [authorsReq, projectsReq] = await Promise.all([
       client.request(authorsQuery),
       client.request(projectsQuery),
@@ -51,6 +23,10 @@
   export let projects
   export let authors
 </script>
+
+<svelte:head>
+  <title>My Portfolio Project</title>
+</svelte:head>
 
 {#each authors as author}
   <div class="flex mb-40 items-end">
