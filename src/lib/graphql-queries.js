@@ -79,3 +79,13 @@ export const postQuery = gql`
     }
   }
 `
+
+export const socialsQuery = gql`
+  query GetSocials {
+    socials {
+      twitterUrl
+      youTubeUrl
+      facebookUrl
+    }
+  }
+`

@@ -1,5 +1,19 @@
+<script context="module">
+  import {
+    authorsStore,
+    fetchAuthors,
+    fetchSocials,
+    socialStore,
+  } from '../../stores/site-metadata'
+
+  fetchSocials()
+  fetchAuthors()
+</script>
+
 <script>
   let pages = [`projects`, `posts`, `about`]
+  const { twitterUrl, youTubeUrl, facebookUrl } = $socialStore
+  const { name: AuthorName } = $authorsStore
 </script>
 
 <footer
@@ -14,7 +28,7 @@
   </div>
   <div>
     <div class="grid grid-flow-col gap-4">
-      <a href="/"
+      <a href={twitterUrl}
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -26,7 +40,7 @@
           /></svg
         ></a
       >
-      <a href="/"
+      <a href={youTubeUrl}
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -38,7 +52,7 @@
           /></svg
         ></a
       >
-      <a href="/"
+      <a href={facebookUrl}
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -54,7 +68,8 @@
   </div>
   <div>
     <p>
-      Copyright © 2022 - All right reserved by ACME Industries Ltd
+      Copyright © {`${new Date().getFullYear()}`} - All right reserved
+      by {AuthorName}
     </p>
   </div>
 </footer>
